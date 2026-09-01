@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#050816">
+  <title>Cartão Profissional em Realidade Aumentada</title>
+
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <!-- MindAR Image Tracking -->
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Interface 2D para orientar o usuário -->
+  <div id="ui">
+    <div id="status" class="status">Aponte a câmera para o cartão.</div>
+    <div id="hint">Mantenha o cartão inteiro e bem iluminado dentro da câmera.</div>
+  </div>
+
+  <a-scene
+    mindar-image="imageTargetSrc: assets/targets/targets.mind; maxTrack: 1; filterMinCF: 0.0001; filterBeta: 0.001; uiScanning: #scanning; uiLoading: #loading;"
+    color-space="sRGB"
+    renderer="colorManagement: true, physicallyCorrectLights"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false"
+    embedded>
+
+    <a-assets>
+      <!-- A imagem abaixo é opcional para o projeto. O target .mind é o arquivo usado pelo MindAR. -->
+      <img id="profilePhoto" src="assets/images/profile.svg" alt="Foto de perfil">
+    </a-assets>
+
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+    <!-- Target 0: substitua assets/targets/targets.mind pelo seu target compilado. -->
+    <a-entity mindar-image-target="targetIndex: 0">
+
+      <!-- Painel central -->
+      <a-plane
+        position="0 0.45 0"
+        width="1.75"
+        height="0.72"
+        color="#07111f"
+        material="opacity: 0.94; shader: flat"
+        animation="property: position; dir: alternate; dur: 1800; loop: true; to: 0 0.50 0.01">
+      </a-plane>
+
+      <a-text
+        value="GUSTAVO KODAMA"
+        position="0 0.66 0.03"
+        align="center"
+        width="2.8"
+        color="#ffffff"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json"
+        negate="false">
+      </a-text>
+
+      <a-text
+        value="Mecatrônica • Tecnologia • Desenvolvimento"
+        position="0 0.48 0.03"
+        align="center"
+        width="2.25"
+        color="#8bdcff"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json"
+        negate="false">
+      </a-text>
+
+      <a-text
+        value="Experiência profissional em RA"
+        position="0 0.31 0.03"
+        align="center"
+        width="2.1"
+        color="#dce7f7"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json"
+        negate="false">
+      </a-text>
+
+      <!-- Bloco 1: Sobre mim -->
+      <a-plane
+        position="-0.68 -0.15 0.02"
+        width="1.25"
+        height="0.82"
+        color="#0c1930"
+        material="opacity: 0.96; shader: flat"
+        rotation="-8 0 0"
+        animation="property: rotation; dir: alternate; dur: 2200; loop: true; to: -8 0 3">
+      </a-plane>
+
+      <a-text
+        value="SOBRE MIM"
+        position="-0.68 0.10 0.04"
+        align="center"
+        width="1.8"
+        color="#ffffff"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json">
+      </a-text>
+
+      <a-text
+        value="Estudante de tecnologia, com foco em automação, programação e soluções práticas. Gosto de transformar ideias em projetos."
+        position="-0.68 -0.12 0.04"
+        align="center"
+        width="1.45"
+        color="#dce7f7"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json"
+        wrap-count="27"
+        line-height="55">
+      </a-text>
+
+      <!-- Bloco 2: Habilidades -->
+      <a-plane
+        position="0.68 -0.15 0.02"
+        width="1.25"
+        height="0.82"
+        color="#0c1930"
+        material="opacity: 0.96; shader: flat"
+        rotation="8 0 0"
+        animation="property: rotation; dir: alternate; dur: 2200; loop: true; to: 8 0 -3">
+      </a-plane>
+
+      <a-text
+        value="HABILIDADES"
+        position="0.68 0.10 0.04"
+        align="center"
+        width="1.8"
+        color="#ffffff"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json">
+      </a-text>
+
+      <a-text
+        value="C++ • Java • HTML/CSS/JS&#10;Arduino • Node-RED&#10;Automação • Redes&#10;Pensamento crítico • Liderança"
+        position="0.68 -0.15 0.04"
+        align="center"
+        width="1.45"
+        color="#dce7f7"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json"
+        line-height="60">
+      </a-text>
+
+      <!-- Bloco 3: Projetos -->
+      <a-plane
+        position="0 -0.92 0.02"
+        width="1.75"
+        height="0.72"
+        color="#0c1930"
+        material="opacity: 0.96; shader: flat"
+        animation="property: scale; dir: alternate; dur: 2400; loop: true; to: 1.02 1.02 1.02">
+      </a-plane>
+
+      <a-text
+        value="PROJETOS"
+        position="0 -0.69 0.04"
+        align="center"
+        width="2.0"
+        color="#ffffff"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json">
+      </a-text>
+
+      <a-text
+        value="• NextGen — conceito de plataforma esportiva&#10;• MOVEX — automação para triagem de recicláveis&#10;• Projetos de redes, programação e IoT"
+        position="0 -0.92 0.04"
+        align="center"
+        width="2.0"
+        color="#dce7f7"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json"
+        line-height="58">
+      </a-text>
+
+      <!-- Rodapé -->
+      <a-text
+        value="FORMAÇÃO • Mecatrônica integrada ao Ensino Médio"
+        position="0 -1.28 0.04"
+        align="center"
+        width="2.25"
+        color="#8bdcff"
+        font="https://cdn.aframe.io/fonts/Roboto-msdf.json">
+      </a-text>
+
+    </a-entity>
+  </a-scene>
+
+  <!-- Estados de carregamento/scanning do MindAR -->
+  <div id="loading" class="mindar-ui-overlay">
+    <div class="loader-card">Carregando experiência de RA…</div>
+  </div>
+
+  <div id="scanning" class="mindar-ui-overlay">
+    <div class="scan-card">Procurando o cartão…</div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
